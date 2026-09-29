@@ -45,16 +45,19 @@ npm install
 ```
 
 ```bash
-# .env
-MONGODB_URI=mongodb://127.0.0.1:27017/appointments
-SESSION_SECRET=change-me
-# SMTP credentials for mail delivery
-MAIL_HOST=
-MAIL_USER=
-MAIL_PASS=
+# .env  — these are the exact names index.js reads
+SECRET=<session secret>
+CONNECTIONSTRING=mongodb://127.0.0.1:27017/appointments
+EMAIL=<smtp account used to send>
+PASSWORD=<smtp account password>
+API_KEY=<optional, currently unused — referenced but commented out>
 ```
 
-Make sure MongoDB is running locally, or point `MONGODB_URI` at a hosted instance.
+There is no `.env.example` in the repo, so the names above are taken directly from `index.js`.
+The SMTP host/port are configured in the `nodemailer` transport block rather than read from the
+environment.
+
+Make sure MongoDB is running locally, or point `CONNECTIONSTRING` at a hosted instance.
 
 ```bash
 npm start        # node index.js
